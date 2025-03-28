@@ -1,40 +1,1424 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="mm">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Tailwind Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>
+   Samui Myanmar Youth Development Foundation (SMYDF)
+  </title>
+<script src="https://cdn.tailwindcss.com">
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<style>
+    /* Pyidaungsu ဖောင့် သတ်မှတ်ချက် */
+    @font-face {
+      font-family: 'Pyidaungsu';
+      src: url('Pyidaungsu-2.5.3_Numbers.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    /* Pyidaungsu ဖောင့်ကို body မှာ အသုံးပြုရန် */
+    body {
+      font-family: 'Pyidaungsu', 'Noto Sans Myanmar', sans-serif !important;
+    }
+    
+    /* Pyidaungsu ဖောင့်ကို စာသားအားလုံးတွင် အသုံးပြုရန် */
+    h1, h2, h3, h4, h5, h6, p, span, div, li, a, button, input, textarea, table {
+      font-family: 'Pyidaungsu', 'Noto Sans Myanmar', sans-serif !important;
+    }
+    
+   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans Myanmar', sans-serif;
+    }
+
+    .section-container {
+      scroll-margin-top: 80px;
+    }
+  
+    /* Mobile-specific styles */
+    @media (max-width: 640px) {
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        h1 {
+            font-size: 1.875rem !important;
+            line-height: 2.25rem !important;
+        }
+        
+        h2 {
+            font-size: 1.5rem !important;
+            line-height: 2rem !important;
+        }
+        
+        .space-y-3 > * + * {
+            margin-top: 0.75rem;
+        }
+        
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        /* Make tables responsive */
+        table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+        }
+        
+        /* Make the hero section look better on mobile */
+        header.pt-24 {
+            padding-top: 6rem;
+        }
+        
+        /* Adjust the footer for mobile */
+        footer .grid {
+            gap: 1.5rem;
+        }
+    }
+    
+    /* Mobile menu styles */
+    @media (max-width: 768px) {
+      .md\:flex {
+        display: none;
+        width: 100%;
+        padding: 1rem;
+      }
+      
+      .md\:flex.active {
+        display: flex;
+      }
+      
+      .md\:flex a {
+        padding: 0.75rem 0;
+        width: 100% !important;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      
+      .md\:flex a:last-child {
+        border-bottom: none;
+      }
+    }
+    
+    /* Additional mobile menu specific styles */
+    @media (min-width: 768px) {
+      .mobile-menu {
+        display: flex !important;
+        position: relative;
+        top: 0;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+      }
+      
+      .mobile-menu a {
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 1rem;
+      }
+    }
+    
+    /* Hamburger button စတိုင် */
+    .md\:hidden {
+      margin-right: 1rem;
+    }
+    
+    /* သေချာစေဖို့ အပိုထည့်ထားတဲ့ စတိုင် */
+    @media (max-width: 768px) {
+      .mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+      }
+    }
+  
+    /* .hidden class definition */
+    .hidden {
+      display: none !important;
+    }
+    
+    /* Modal Menu Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 40;
+      display: none;
+    }
+
+    .modal-menu {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      z-index: 50;
+      max-width: 90%;
+      width: 300px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      display: none;
+    }
+
+    .modal-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      text-decoration: none;
+      color: #4B5563;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .modal-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .modal-menu a:hover {
+      background-color: #F3F4F6;
+      color: #2563EB;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .modal-close {
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #6B7280;
+    }
+    
+    .modal-close:hover {
+      color: #EF4444;
+    }
+    
+    body.modal-open {
+      overflow: hidden;
+    }
+    
+    .modal-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: #1F2937;
+    }
+    
+    /* ခလုတ်များအတွက် animation */
+    .btn-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .btn-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1), 0 10px 10px -5px rgba(37, 99, 235, 0.04);
+    }
+    
+    /* Hamburger button စတိုင် - ဒက်စ်တော့တွင်ပါ ပြသရန် */
+    .hamburger-container {
+      margin-right: 1rem;
+    }
+    
+    /* သေချာစေရန် ထပ်ထည့်သော စတိုင် */
+    .hamburger-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+      padding: 0.5rem;
+    }
+    
+    .hamburger-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    /* ဒက်စ်တော့ မျက်နှာပြင်တွင် modal menu စတိုင် */
+    @media (min-width: 768px) {
+      .modal-menu {
+        width: 350px;
+      }
+    }
+    </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal elements
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const detailsBtn = document.getElementById('detailsBtn');
+    const modalMenu = document.getElementById('modalMenu');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const body = document.body;
+    
+    // Open modal when hamburger button is clicked
+    hamburgerBtn.addEventListener('click', function() {
+        openModal();
+    });
+    
+    // Open modal when details button is clicked
+    if (detailsBtn) {
+        detailsBtn.addEventListener('click', function() {
+            openModal();
+        });
+    }
+    
+    // Close modal when close button is clicked
+    modalClose.addEventListener('click', function() {
+        closeModal();
+    });
+    
+    // Close modal when overlay is clicked
+    modalOverlay.addEventListener('click', function() {
+        closeModal();
+    });
+    
+    // Close modal when menu item is clicked
+    const menuItems = document.querySelectorAll('.modal-item');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Smooth scroll to the section
+            const targetId = this.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Close the modal
+            closeModal();
+        });
+    });
+    
+    // Function to open modal
+    function openModal() {
+        modalMenu.style.display = 'block';
+        modalOverlay.style.display = 'block';
+        body.classList.add('modal-open');
+    }
+    
+    // Function to close modal
+    function closeModal() {
+        modalMenu.style.display = 'none';
+        modalOverlay.style.display = 'none';
+        body.classList.remove('modal-open');
+    }
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalMenu.style.display === 'block') {
+            closeModal();
+        }
+    });
+});
+</script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
-  <!-- Header -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">My Website</h1>
-      <nav>
-        <ul class="flex space-x-4">
-          <li><a href="#" class="text-blue-600 hover:underline">Home</a></li>
-          <li><a href="#" class="text-blue-600 hover:underline">About</a></li>
-          <li><a href="#" class="text-blue-600 hover:underline">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="bg-blue-500 text-white py-20">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">Welcome to My Tailwind Page</h2>
-      <p class="text-lg mb-6">This is a simple responsive layout using Tailwind CSS.</p>
-      <a href="#" class="bg-white text-blue-500 font-semibold px-6 py-2 rounded hover:bg-gray-200 transition">Get Started</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white border-t mt-20 py-6 text-center text-sm text-gray-500">
-    © 2025 My Website. All rights reserved.
-  </footer>
-
-</body>
+<body class="bg-gray-50">
+<!-- Navigation Bar -->
+<nav class="fixed w-full bg-white shadow-md z-10">
+<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<div class="hamburger-container">
+<button class="text-gray-700 hamburger-btn" id="hamburger-btn">
+<i class="fas fa-bars text-xl">
+</i>
+</button>
+</div>
+<div class="flex items-center space-x-2">
+<i class="fas fa-graduation-cap text-blue-600 text-2xl">
+</i>
+<span class="text-xl font-bold text-blue-800">
+      SMYDF
+     </span>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="pt-24 pb-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+<div class="container mx-auto px-4 text-center">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">
+     Samui Myanmar Youth Development Foundation
+    </h1>
+<h2 class="text-2xl md:text-3xl mb-8">
+     အဆိုပြုလွှာ
+    </h2>
+<p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+     ကော့စမွေကျွန်းရှိ မြန်မာလူငယ်များ၏ အသက်မွေးဝမ်းကျောင်းပညာရည် မြှင့်တင်ရေးနှင့် အလုပ်အကိုင်အခွင့်အလမ်းများ
+        တိုးမြှင့်ရရှိစေရန်
+    </p>
+<button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-50 transition btn-hover" id="detailsBtn">
+     အသေးစိတ်ကြည့်ရှုရန်
+    </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-12">
+<!-- Section: စီမံကိန်းအကျဉ်း -->
+<section class="mb-16 section-container" id="summary">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-file-alt text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၁။ စီမံကိန်းအကျဉ်း
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<p class="text-gray-700 leading-relaxed">
+      Samui Myanmar Youth Development Foundation (SMYDF) သည် ကော့စမွေကျွန်းရှိ မြန်မာလူငယ်များ၏
+          အသက်မွေးဝမ်းကျောင်းပညာရည် မြှင့်တင်ရေးနှင့် အလုပ်အကိုင်အခွင့်အလမ်းများ တိုးမြှင့်ရရှိစေရန် ရည်ရွယ်၍
+          ဖွဲ့စည်းထားသော အဖွဲ့အစည်းတစ်ခုဖြစ်ပါသည်။ ကျွန်းပေါ်ရှိ ဟိုတယ်နှင့် ခရီးသွားလုပ်ငန်း ကဏ္ဍများတွင်
+          လုပ်ကိုင်နိုင်ရန် လိုအပ်သော ကျွမ်းကျင်မှုများကို သင်ကြားပေးခြင်းဖြင့် မြန်မာလူငယ်များ၏ ဘဝရပ်တည်မှုကို
+          မြှင့်တင်ပေးနိုင်ရန် ရည်ရွယ်ပါသည်။
+     </p>
+</div>
+</section>
+<!-- Section: နောက်ခံအကြောင်းအရာ -->
+<section class="mb-16 section-container" id="background">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-history text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၂။ နောက်ခံအကြောင်းအရာ
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<p class="text-gray-700 leading-relaxed mb-4">
+      ထိုင်းနိုင်ငံ၊ ကော့စမွေကျွန်းသည် ကမ္ဘာ့အထင်ကရ ခရီးသွားဒေသတစ်ခုဖြစ်ပြီး၊ နိုင်ငံရပ်ခြားမှ အလုပ်သမားများစွာအတွက်
+          အလုပ်အကိုင်အခွင့်အလမ်းများစွာ ပေးစွမ်းနိုင်သည့် နေရာတစ်ခုဖြစ်ပါသည်။ ကော့စမွေကျွန်းပေါ်ရှိ လုပ်ငန်းများတွင်
+          လုပ်ကိုင်နေသော မြန်မာလုပ်သားအများစုမှာ အခြေခံပညာအရည်အချင်းနှင့် သက်ဆိုင်ရာလုပ်ငန်းကဏ္ဍအလိုက်
+          လုပ်ငန်းခွင်သင်တန်းများ မရရှိခဲ့ကြပါ။
+     </p>
+<p class="text-gray-700 leading-relaxed mb-4">
+      ထို့ကြောင့် အခြေခံအဆင့် လုပ်ငန်းခွင်များတွင်သာ လုပ်ကိုင်နေကြရပြီး၊ တိုးတက်မှု အခွင့်အလမ်းများ
+          နည်းပါးလျက်ရှိပါသည်။
+     </p>
+<p class="text-gray-700 leading-relaxed">
+      ကော့စမွေကျွန်းပေါ်တွင် ဟိုတယ်၊ စားသောက်ဆိုင်နှင့် ဧည့်ဝန်ဆောင်မှုလုပ်ငန်းများသည် အဓိကစီးပွားရေးကဏ္ဍများ
+          ဖြစ်ကြပါသည်။ ယင်းလုပ်ငန်းများတွင် ကျွမ်းကျင်မှုရှိသော ဝန်ထမ်းများသည် ပိုမိုကောင်းမွန်သော လုပ်ခလစာနှင့်
+          ရာထူးတိုးမြှင့်မှုအခွင့်အလမ်းများကို ရရှိနိုင်ပါသည်။
+     </p>
+</div>
+</section>
+<!-- Section: ရည်မှန်းချက်နှင့် ရည်ရွယ်ချက်များ -->
+<section class="mb-16 section-container" id="objectives">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-bullseye text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၃။ ရည်မှန်းချက်နှင့် ရည်ရွယ်ချက်များ
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      ရည်မှန်းချက်
+     </h3>
+<p class="text-gray-700 leading-relaxed mb-6">
+      ကော့စမွေကျွန်းရှိ မြန်မာလူငယ်များ အရည်အသွေးမြင့် ဧည့်ဝန်ဆောင်မှုကဏ္ဍ ကျွမ်းကျင်သူများအဖြစ်
+          ရပ်တည်နိုင်စေရန်နှင့် စီးပွားရေး၊ လူမှုရေး ဖွံ့ဖြိုးတိုးတက်စေရန်။
+     </p>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      ရည်ရွယ်ချက်များ
+     </h3>
+<ul class="list-disc pl-6 space-y-2 text-gray-700">
+<li>
+       မြန်မာလူငယ်များအား ဧည့်ဝန်ဆောင်မှုနှင့် ဆိုင်သော အသက်မွေးဝမ်းကျောင်းပညာရပ်များ သင်ကြားပေးရန်
+      </li>
+<li>
+       သင်တန်းသားများ လုပ်ငန်းခွင်တွင် ယုံကြည်မှုရှိစွာ ဝင်ရောက်လုပ်ကိုင်နိုင်ရန် လက်တွေ့အတွေ့အကြုံများ ပေးအပ်ရန်
+      </li>
+<li>
+       အလုပ်အကိုင်ခန့်ထားရေးအခွင့်အလမ်းများ ဖန်တီးပေးခြင်းဖြင့် ဒေသခံစီးပွားရေးလုပ်ငန်းများနှင့် ချိတ်ဆက်ပေးရန်
+      </li>
+<li>
+       အလုပ်ရှင်များ လိုအပ်သော ကျွမ်းကျင်မှုများနှင့် ကိုက်ညီသည့် သင်တန်းသားများကို မွေးထုတ်ပေးရန်
+      </li>
+<li>
+       မြန်မာလူငယ်များအား ပိုမိုကောင်းမွန်သော ဘဝအနာဂတ်အတွက် လိုအပ်သော အထောက်အပံ့ပေးရန်
+      </li>
+</ul>
+</div>
+</section>
+<!-- Section: စီမံကိန်းဖွဲ့စည်းပုံ -->
+<section class="mb-16 section-container" id="structure">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-sitemap text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၄။ စီမံကိန်းဖွဲ့စည်းပုံ
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      ၄.၁ သင်တန်းအမျိုးအစားများ
+     </h3>
+<!-- Card Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 gap-4 md:gap-6">
+<!-- Course Card 1 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+<div class="bg-blue-500 text-white p-4">
+<h4 class="text-lg font-bold">
+         အခြေခံစားပွဲထိုးသင်တန်း
+        </h4>
+</div>
+<div class="p-4">
+<div class="flex items-center text-gray-600 mb-2">
+<i class="far fa-clock mr-2">
+</i>
+<span>
+          သင်တန်းကာလ - ၄ ပတ်
+         </span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<i class="fas fa-users mr-2">
+</i>
+<span>
+          သင်တန်းသားဦးရေ - အပတ်စဉ် ၁၅-၂၀ ဦး
+         </span>
+</div>
+<h5 class="font-semibold mb-2 text-gray-700">
+         သင်ကြားမည့်အကြောင်းအရာများ
+        </h5>
+<ul class="text-gray-600 text-sm space-y-1 pl-5 list-disc">
+<li>
+          စားသောက်ဆိုင်ဝန်ဆောင်မှု အခြေခံ
+         </li>
+<li>
+          စားပွဲခင်းကျင်းခြင်းနှင့် ပြင်ဆင်ခြင်း
+         </li>
+<li>
+          ဧည့်သည်များကို နှုတ်ဆက်ကြိုဆိုခြင်းနှင့် ဝန်ဆောင်မှုပေးခြင်း
+         </li>
+<li>
+          အမှာစာရေးသားခြင်းနှင့် အစားအသောက်မှာယူခြင်း
+         </li>
+</ul>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+<div class="bg-green-500 text-white p-4">
+<h4 class="text-lg font-bold">
+         အခြေခံမီးဖိုချောင်အကူသင်တန်း
+        </h4>
+</div>
+<div class="p-4">
+<div class="flex items-center text-gray-600 mb-2">
+<i class="far fa-clock mr-2">
+</i>
+<span>
+          သင်တန်းကာလ - ၄ ပတ်
+         </span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<i class="fas fa-users mr-2">
+</i>
+<span>
+          သင်တန်းသားဦးရေ - အပတ်စဉ် ၁၅-၂၀ ဦး
+         </span>
+</div>
+<h5 class="font-semibold mb-2 text-gray-700">
+         သင်ကြားမည့်အကြောင်းအရာများ
+        </h5>
+<ul class="text-gray-600 text-sm space-y-1 pl-5 list-disc">
+<li>
+          မီးဖိုချောင်တွင်းလုံခြုံရေးနှင့် တစ်ကိုယ်ရေသန့်ရှင်းရေး
+         </li>
+<li>
+          အစားအသောက်များ ကိုင်တွယ်ခြင်းနှင့် သိုလှောင်ခြင်း
+         </li>
+<li>
+          ဟင်းသီးဟင်းရွက်ပြင်ဆင်ခြင်းနှင့် ဓားကိုင်နည်းအခြေခံများ
+         </li>
+<li>
+          အခြေခံဟင်းချက်နည်းများ
+         </li>
+</ul>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+<div class="bg-purple-500 text-white p-4">
+<h4 class="text-lg font-bold">
+         အခြေခံ Bartender သင်တန်း
+        </h4>
+</div>
+<div class="p-4">
+<div class="flex items-center text-gray-600 mb-2">
+<i class="far fa-clock mr-2">
+</i>
+<span>
+          သင်တန်းကာလ - ၃ ပတ်
+         </span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<i class="fas fa-users mr-2">
+</i>
+<span>
+          သင်တန်းသားဦးရေ - အပတ်စဉ် ၁၀-၁၅ ဦး
+         </span>
+</div>
+<h5 class="font-semibold mb-2 text-gray-700">
+         သင်ကြားမည့်အကြောင်းအရာများ
+        </h5>
+<ul class="text-gray-600 text-sm space-y-1 pl-5 list-disc">
+<li>
+          ဘားကောင်တာစီမံခန့်ခွဲခြင်း
+         </li>
+<li>
+          အရက်၊ ဝိုင်နှင့် ဘီယာအမျိုးအစားများ
+         </li>
+<li>
+          အခြေခံ cocktail နှင့် drink ဖျော်နည်းများ
+         </li>
+<li>
+          ဘားကောင်တာတွင် သန့်ရှင်းရေးနှင့် ထိန်းသိမ်းရေး
+         </li>
+</ul>
+</div>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      ၄.၂ သင်တန်းပို့ချပုံ
+     </h3>
+<div class="bg-gray-50 p-4 rounded-lg mb-6">
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center bg-blue-100 p-3 rounded-lg">
+<div class="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center mr-3">
+<span class="font-bold">
+          50%
+         </span>
+</div>
+<div>
+<span class="text-gray-700">
+          သင်ခန်းစာသင်ကြားခြင်း
+         </span>
+</div>
+</div>
+<div class="flex items-center bg-green-100 p-3 rounded-lg">
+<div class="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center mr-3">
+<span class="font-bold">
+          40%
+         </span>
+</div>
+<div>
+<span class="text-gray-700">
+          လက်တွေ့လေ့ကျင့်ခန်းများ
+         </span>
+</div>
+</div>
+<div class="flex items-center bg-yellow-100 p-3 rounded-lg">
+<div class="w-12 h-12 rounded-full bg-yellow-500 text-white flex items-center justify-center mr-3">
+<span class="font-bold">
+          10%
+         </span>
+</div>
+<div>
+<span class="text-gray-700">
+          လေ့လာရေးခရီး
+         </span>
+</div>
+</div>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      ၄.၃ ဆရာများနှင့် ဝန်ထမ်းများ
+     </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-4 md:gap-6">
+<div class="flex items-center p-3 border border-gray-200 rounded-lg">
+<i class="fas fa-user-tie text-blue-500 text-2xl mr-3">
+</i>
+<span class="text-gray-700">
+        စီမံကိန်းမန်နေဂျာ ၁ ဦး
+       </span>
+</div>
+<div class="flex items-center p-3 border border-gray-200 rounded-lg">
+<i class="fas fa-calculator text-blue-500 text-2xl mr-3">
+</i>
+<span class="text-gray-700">
+        ခန့်မှန်းချေအရာရှိ ၁ ဦး
+       </span>
+</div>
+<div class="flex items-center p-3 border border-gray-200 rounded-lg">
+<i class="fas fa-chalkboard-teacher text-blue-500 text-2xl mr-3">
+</i>
+<span class="text-gray-700">
+        သင်တန်းညှိနှိုင်းရေးမှူး ၁ ဦး
+       </span>
+</div>
+<div class="flex items-center p-3 border border-gray-200 rounded-lg">
+<i class="fas fa-user-graduate text-blue-500 text-2xl mr-3">
+</i>
+<span class="text-gray-700">
+        ကဏ္ဍအလိုက်နည်းပြဆရာ/ဆရာမ ၃ ဦး
+       </span>
+</div>
+<div class="flex items-center p-3 border border-gray-200 rounded-lg">
+<i class="fas fa-language text-blue-500 text-2xl mr-3">
+</i>
+<span class="text-gray-700">
+        စကားပြန် ၁ ဦး
+       </span>
+</div>
+<div class="flex items-center p-3 border border-gray-200 rounded-lg">
+<i class="fas fa-desktop text-blue-500 text-2xl mr-3">
+</i>
+<span class="text-gray-700">
+        စီမံရုံးဝန်ထမ်း ၁ ဦး
+       </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Budget -->
+<section class="mb-16 section-container" id="budget">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-coins text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၇။ ဘဏ္ဍာငွေလိုအပ်ချက်နှင့် ဘတ်ဂျက်
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      ကနဦးရင်းနှီးမြှုပ်နှံမှု (တစ်ကြိမ်)
+     </h3>
+<div class="overflow-x-auto mb-8">
+<table class="min-w-full bg-white border border-gray-200 table-auto min-w-full overflow-x-auto">
+<thead>
+<tr>
+<th class="py-2 px-4 border-b text-left bg-gray-100">
+          ပစ္စည်း/ဝန်ဆောင်မှု
+         </th>
+<th class="py-2 px-4 border-b text-right bg-gray-100">
+          ပမာဏ (ဘတ်)
+         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="py-2 px-4 border-b">
+          သင်တန်းခန်းမ ချဲ့ထွင်ခြင်း
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          စားပွဲထိုးလေ့ကျင့်ရေးပစ္စည်းများ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          မီးဖိုချောင်လေ့ကျင့်ရေးပစ္စည်းများ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          ဘားလေ့ကျင့်ရေးပစ္စည်းများ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          ရုံးသုံးပစ္စည်းများ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr class="bg-blue-50 font-bold">
+<td class="py-2 px-4 border-b">
+          စုစုပေါင်း ကနဦးရင်းနှီးမြှုပ်နှံမှု
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      နှစ်စဉ်လည်ပတ်စရိတ်
+     </h3>
+<div class="overflow-x-auto mb-8">
+<table class="min-w-full bg-white border border-gray-200 table-auto min-w-full overflow-x-auto">
+<thead>
+<tr>
+<th class="py-2 px-4 border-b text-left bg-gray-100">
+          ပစ္စည်း/ဝန်ဆောင်မှု
+         </th>
+<th class="py-2 px-4 border-b text-right bg-gray-100">
+          ပမာဏ (ဘတ်)
+         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="py-2 px-4 border-b">
+          နည်းပြဆရာ/ဆရာမများလစာ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          စီမံခန့်ခွဲရေးဝန်ထမ်းလစာ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          အသုံးပြုပစ္စည်းများ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          အဆောက်အဦငှားရမ်းခ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          ကြော်ငြာနှင့် သင်တန်းသားစုဆောင်းခြင်း
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          ဝန်ဆောင်ခနှင့် ပရိဘောဂထိန်းသိမ်းစရိတ်
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b">
+          အခြားကုန်ကျစရိတ်များ
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+<tr class="bg-blue-50 font-bold">
+<td class="py-2 px-4 border-b">
+          စုစုပေါင်းနှစ်စဉ်လည်ပတ်စရိတ်
+         </td>
+<td class="py-2 px-4 border-b text-right">
+          XXXXXX
+         </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section: Implementation Plan -->
+<section class="mb-16 section-container" id="implementation">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-tasks text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၅။ အကောင်အထည်ဖော်ဆောင်ရွက်မည့်အစီအစဥ်
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="mb-8">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+       ၅.၁ ပြင်ဆင်ခြင်းအဆင့် (၃ လ)
+      </h3>
+<ul class="list-disc pl-6 space-y-2 text-gray-700">
+<li>
+        သင်တန်းနေရာ စီစဉ်ခြင်းနှင့် ပြင်ဆင်ခြင်း
+       </li>
+<li>
+        သင်ရိုးညွှန်းတမ်းရေးဆွဲခြင်း
+       </li>
+<li>
+        သင်ထောက်ကူပစ္စည်းများ ပြင်ဆင်ခြင်း
+       </li>
+<li>
+        နည်းပြဆရာ/ဆရာမများ ခန့်အပ်ခြင်း
+       </li>
+<li>
+        ဒေသခံစီးပွားရေးလုပ်ငန်းများနှင့် ဆက်သွယ်ခြင်း
+       </li>
+<li>
+        သင်တန်းသားများ စုဆောင်းခြင်း
+       </li>
+</ul>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+       ၅.၂ အကောင်အထည်ဖော်ခြင်းအဆင့် (၁၂ လ)
+      </h3>
+<div class="bg-gray-50 p-4 rounded-lg">
+<ul class="list-disc pl-6 space-y-2 text-gray-700">
+<li>
+         သင်တန်းအပတ်စဉ် ၄ ခုကို တစ်နှစ်တာ ပြုလုပ်သွားခြင်း
+        </li>
+<li>
+         သင်တန်းအမျိုးအစားသုံးခုကို တစ်ပြိုင်နက် သင်ကြားပေးသွားမည်
+        </li>
+<li>
+         တစ်နှစ်အတွင်း သင်တန်းသား စုစုပေါင်း ၄၈၀ ဦး လက်ခံသင်ကြားသွားမည်
+        </li>
+<li>
+         သင်တန်းပြီးဆုံးပါက ယာယီအလုပ်သင် အစီအစဉ်များ စီစဉ်ပေးခြင်း
+        </li>
+<li>
+         သင်တန်းပြီးဆုံးသူများအတွက် အလုပ်အကိုင်ရှာဖွေပေးခြင်း
+        </li>
+</ul>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+       ၅.၃ စောင့်ကြည့်လေ့လာခြင်းနှင့် အကဲဖြတ်ခြင်း
+      </h3>
+<div class="bg-gray-50 p-4 rounded-lg">
+<ul class="list-disc pl-6 space-y-2 text-gray-700">
+<li>
+         သင်တန်းသားများ၏ တိုးတက်မှုကို မှတ်တမ်းတင်ခြင်း
+        </li>
+<li>
+         သင်တန်းပြီးဆုံးပါက စစ်တမ်းကောက်ယူခြင်း
+        </li>
+<li>
+         အလုပ်ရရှိမှုနှင့် ရေရှည်တည်မြဲမှုကို စောင့်ကြည့်လေ့လာခြင်း
+        </li>
+<li>
+         သင်ရိုးညွှန်းတမ်းနှင့် သင်ကြားမှုနည်းလမ်းများကို ပြန်လည်သုံးသပ်ခြင်း
+        </li>
+<li>
+         လိုအပ်ပါက သင်ရိုးညွှန်းတမ်းနှင့် သင်ကြားမှုနည်းလမ်းများကို ပြင်ဆင်ခြင်း
+        </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Results and Impact -->
+<section class="mb-16 section-container" id="results">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-chart-line text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၆။ ရလဒ်နှင့် သက်ရောက်မှု
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 gap-4 md:gap-6">
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+        ၆.၁ တိုက်ရိုက်ရလဒ်များ
+       </h3>
+<ul class="list-disc pl-6 space-y-3 text-gray-700">
+<li>
+         တစ်နှစ်လျှင် သင်တန်းသား
+         <span class="font-bold text-blue-600">
+          ၄၈၀ ဦး
+         </span>
+         အောင်မြင်စွာ
+                လေ့ကျင့်သင်ကြားပေးနိုင်ခြင်း
+        </li>
+<li>
+         သင်တန်းပြီးဆုံးသူများ၏
+         <span class="font-bold text-blue-600">
+          ၇၀%
+         </span>
+         အလုပ်အကိုင်ရရှိခြင်း
+        </li>
+<li>
+         သင်တန်းပြီးဆုံးသူများ၏
+         <span class="font-bold text-blue-600">
+          ၅၀%
+         </span>
+         ပထမနှစ်အတွင်း
+                လစာတိုးမြှင့်ရရှိခြင်း
+        </li>
+<li>
+         သင်တန်းပြီးဆုံးသူများ၏
+         <span class="font-bold text-blue-600">
+          ၃၀%
+         </span>
+         နှစ်နှစ်အတွင်း
+                ရာထူးတိုးမြှင့်ရရှိခြင်း
+        </li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+        ၆.၂ ရေရှည်သက်ရောက်မှု
+       </h3>
+<ul class="list-disc pl-6 space-y-3 text-gray-700">
+<li>
+         မြန်မာလူငယ်များ၏ စီးပွားရေးနှင့် လူနေမှုအဆင့်အတန်း တိုးတက်လာခြင်း
+        </li>
+<li>
+         ကျွမ်းကျင်လုပ်သားများ ပိုမိုတိုးပွားလာခြင်းဖြင့် ဒေသခံစီးပွားရေးတိုးတက်လာခြင်း
+        </li>
+<li>
+         မြန်မာလူငယ်များအကြား တန်းတူအခွင့်အလမ်းများ ရရှိလာခြင်း
+        </li>
+<li>
+         မြန်မာလူငယ်များနှင့် ဒေသခံများအကြား ယဉ်ကျေးမှုဖလှယ်မှုနှင့် နားလည်မှု တိုးတက်လာခြင်း
+        </li>
+</ul>
+</div>
+</div>
+<!-- Impact Chart -->
+<div class="mt-8">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+       ရလဒ်အနေဖြင့် မျှော်မှန်းထားသော ရာခိုင်နှုန်းများ
+      </h3>
+<div class="bg-gray-50 p-6 rounded-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 gap-4 md:gap-6">
+<div class="bg-white p-4 rounded-lg shadow-sm text-center">
+<div class="w-24 h-24 rounded-full bg-blue-500 flex items-center justify-center mx-auto mb-4">
+<span class="text-white text-2xl font-bold">
+           70%
+          </span>
+</div>
+<p class="text-gray-700">
+          သင်တန်းပြီးဆုံးသူများ အလုပ်အကိုင်ရရှိခြင်း
+         </p>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-sm text-center">
+<div class="w-24 h-24 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
+<span class="text-white text-2xl font-bold">
+           50%
+          </span>
+</div>
+<p class="text-gray-700">
+          လစာတိုးမြှင့်ရရှိခြင်း
+         </p>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-sm text-center">
+<div class="w-24 h-24 rounded-full bg-purple-500 flex items-center justify-center mx-auto mb-4">
+<span class="text-white text-2xl font-bold">
+           30%
+          </span>
+</div>
+<p class="text-gray-700">
+          ရာထူးတိုးမြှင့်ရရှိခြင်း
+         </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Fundraising Plans -->
+<section class="mb-16 section-container" id="fundraising">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-hand-holding-usd text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၈။ ရန်ပုံငွေရှာဖွေရေးအစီအစဉ်
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<p class="text-gray-700 mb-6">
+      SMYDF သည် အောက်ပါရန်ပုံငွေအရင်းအမြစ်များမှ ဘဏ္ဍာငွေရရှိရန် စီစဉ်ထားပါသည်။
+     </p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8 gap-4 md:gap-6">
+<div class="bg-blue-50 p-4 rounded-lg text-center">
+<i class="fas fa-globe text-blue-600 text-3xl mb-4">
+</i>
+<p class="text-gray-700">
+        အလှူရှင်အဖွဲ့အစည်းများမှ ထောက်ပံ့ငွေ
+       </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg text-center">
+<i class="fas fa-hotel text-blue-600 text-3xl mb-4">
+</i>
+<p class="text-gray-700">
+        ကော့စမွေရှိ ဟိုတယ်နှင့် စားသောက်ဆိုင်လုပ်ငန်းရှင်များထံမှ စပွန်ဆာပံ့ပိုးမှု
+       </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg text-center">
+<i class="fas fa-bullhorn text-blue-600 text-3xl mb-4">
+</i>
+<p class="text-gray-700">
+        ကမ္ပိန်းများနှင့် ရန်ပုံငွေရှာဖွေရေးပွဲများ
+       </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg text-center">
+<i class="fas fa-money-bill text-blue-600 text-3xl mb-4">
+</i>
+<p class="text-gray-700">
+        သင်တန်းကြေး (သင်တန်းစရိတ်၏ ၂၀-၃၀%)
+       </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg text-center">
+<i class="fas fa-donate text-blue-600 text-3xl mb-4">
+</i>
+<p class="text-gray-700">
+        အခြားအလှူငွေများ
+       </p>
+</div>
+</div>
+<p class="text-gray-700">
+      ပထမနှစ်တွင် အဖွဲ့အစည်းအသစ်ဖြစ်သောကြောင့် ရန်ပုံငွေရရှိရန် ခက်ခဲနိုင်သော်လည်း၊
+          အလုပ်အကိုင်ရရှိမှုရလဒ်များ ပြသနိုင်ပါက ဒုတိယနှစ်မှစ၍ ရန်ပုံငွေပိုမိုလွယ်ကူစွာ ရရှိလာနိုင်ပါသည်။
+     </p>
+</div>
+</section>
+<!-- Section: Sustainability -->
+<section class="mb-16 section-container" id="sustainability">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-recycle text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၉။ ရေရှည်တည်တံ့ခိုင်မြဲမှုအစီအစဉ်
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<p class="text-gray-700 mb-6">
+      SMYDF သည် ရေရှည်တည်တံ့ခိုင်မြဲစေရန် အောက်ပါအစီအစဉ်များကို စီစဉ်ထားပါသည်။
+     </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 gap-4 md:gap-6">
+<div class="flex items-start p-4 bg-gray-50 rounded-lg">
+<div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1 mr-4">
+<i class="fas fa-chart-line">
+</i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-2">
+         သင်တန်းကြေးများ တဖြည်းဖြည်းတိုးမြှင့်ခြင်း
+        </h4>
+<p class="text-gray-700 text-sm">
+         အရည်အသွေးနှင့် ဝန်ဆောင်မှုများ တိုးတက်လာသည်နှင့်အမျှ သင်တန်းကြေးများကို
+                ဈေးကွက်နှုန်းထားနှင့်အညီ တဖြည်းဖြည်း တိုးမြှင့်သွားမည်။
+        </p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-gray-50 rounded-lg">
+<div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1 mr-4">
+<i class="fas fa-users">
+</i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-2">
+         အလုပ်ရှင်များထံမှ ဝန်ထမ်းငှားရမ်းခန့်ထားခြင်းအတွက်
+                အခကြေးငွေကောက်ခံခြင်း
+        </h4>
+<p class="text-gray-700 text-sm">
+         သင်တန်းပြီးဆုံးသူများကို အလုပ်ရှင်များ ငှားရမ်းသည့်အခါ ကောက်ခံသော
+                အခကြေးငွေ
+        </p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-gray-50 rounded-lg">
+<div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1 mr-4">
+<i class="fas fa-user-graduate">
+</i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-2">
+         အောင်မြင်သော သင်တန်းပြီးဆုံးသူများမှ လစဉ်ကြေး
+                အနည်းငယ်ကောက်ခံခြင်း
+        </h4>
+<p class="text-gray-700 text-sm">
+         ကောင်းမွန်သော အလုပ်အကိုင်ရရှိပြီး ဝင်ငွေတိုးတက်လာသော
+                သင်တန်းပြီးဆုံးသူများမှ ပြန်လည်ထည့်ဝင်ကြေး
+        </p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-gray-50 rounded-lg">
+<div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1 mr-4">
+<i class="fas fa-chalkboard-teacher">
+</i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-2">
+         အထူးသင်တန်းအစီအစဉ်များ စီစဉ်ပေးခြင်းဖြင့် ဝင်ငွေရှာဖွေခြင်း
+        </h4>
+<p class="text-gray-700 text-sm">
+         လုပ်ငန်းခွင်တွင် ရှိနေသော အလုပ်သမားများအတွက် အဆင့်မြင့်သင်တန်းများ
+                ပို့ချခြင်း
+        </p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-gray-50 rounded-lg">
+<div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1 mr-4">
+<i class="fas fa-handshake">
+</i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-2">
+         ခရီးသွားလုပ်ငန်းနှင့် ဧည့်ဝန်ဆောင်မှုလုပ်ငန်းများနှင့်
+                မိတ်ဖက်ပြုခြင်း
+        </h4>
+<p class="text-gray-700 text-sm">
+         ရေရှည်ပူးပေါင်းဆောင်ရွက်မှုများအတွက် ဒေသခံစီးပွားရေးလုပ်ငန်းများနှင့်
+                မိတ်ဖက်ပြုခြင်း
+        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Evaluation -->
+<section class="mb-16 section-container" id="evaluation">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-clipboard-check text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၁၀။ ဆန်းစစ်ခြင်းနှင့် အကဲဖြတ်ခြင်း
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+      တိုင်းတာမည့်အညွှန်းကိန်းများ
+     </h3>
+<div class="space-y-2 mb-8">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+       တိုင်းတာမည့်အညွှန်းကိန်းများ
+      </h3>
+<div class="space-y-2 mb-8">
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         သင်တန်းပြီးဆုံးသူ အရေအတွက်
+        </span>
+</div>
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         သင်တန်းပြီးဆုံးသူများ အလုပ်ရရှိမှုနှုန်း
+        </span>
+</div>
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         သင်တန်းပြီးဆုံးပြီး ၆ လအတွင်း လစာတိုးမြှင့်ရရှိသူ အရေအတွက်
+        </span>
+</div>
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         သင်တန်းပြီးဆုံးပြီး ၁၂ လအတွင်း ရာထူးတိုးမြှင့်ရရှိသူ အရေအတွက်
+        </span>
+</div>
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         သင်တန်းပြီးဆုံးသူများ၏ ကျေနပ်မှုအဆင့်
+        </span>
+</div>
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         အလုပ်ရှင်များ၏ ကျေနပ်မှုအဆင့်
+        </span>
+</div>
+<div class="flex items-center p-3 bg-gray-50 rounded-lg">
+<i class="fas fa-check-circle text-green-500 mr-3">
+</i>
+<span class="text-gray-700">
+         ဝင်ငွေရရှိမှုနှင့် ရေရှည်တည်တံ့ရေး
+        </span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+       ဆန်းစစ်ခြင်းလုပ်ငန်းစဉ်
+      </h3>
+<ul class="list-disc pl-6 space-y-2 text-gray-700">
+<li>
+        သင်တန်းပြီးဆုံးပါက သင်တန်းသားများထံမှ တုံ့ပြန်ချက်ရယူခြင်း
+       </li>
+<li>
+        သုံးလတစ်ကြိမ် သင်တန်းပြီးဆုံးသူများ၏ အလုပ်အကိုင်အခြေအနေကို စောင့်ကြည့်ခြင်း
+       </li>
+<li>
+        အလုပ်ရှင်များထံမှ ပုံမှန် တုံ့ပြန်ချက်ရယူခြင်း
+       </li>
+<li>
+        နှစ်စဉ်အစီရင်ခံစာများ ပြုစုခြင်း
+       </li>
+<li>
+        နှစ်စဉ်ရန်ပုံငွေရရှိမှုနှင့် သုံးစွဲမှုများကို စိစစ်သုံးသပ်ခြင်း
+       </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Section: Conclusion -->
+<section class="mb-16 section-container" id="conclusion">
+<div class="flex items-center mb-6">
+<div class="bg-blue-600 p-3 rounded-full mr-4 text-white">
+<i class="fas fa-flag-checkered text-xl">
+</i>
+</div>
+<h2 class="text-3xl font-bold text-gray-800">
+      ၁၁။ နိဂုံး
+     </h2>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<p class="text-gray-700 leading-relaxed mb-4">
+      Samui Myanmar Youth Development Foundation (SMYDF) သည် ကော့စမွေကျွန်းရှိ မြန်မာလူငယ်များ၏ အနာဂတ်အတွက်
+          အရေးပါသော ရင်းနှီးမြှုပ်နှံမှုတစ်ခုဖြစ်ပါသည်။ ၎င်းသည် မြန်မာလူငယ်များ၏ စွမ်းရည်မြှင့်တင်ရေး၊
+          အလုပ်အကိုင်အခွင့်အလမ်းပိုမိုရရှိရေးနှင့် လူနေမှုအဆင့်အတန်းမြှင့်တင်ရေးတို့အတွက် အထောက်အကူပြုပါလိမ့်မည်။
+     </p>
+<p class="text-gray-700 leading-relaxed">
+      ဤစီမံကိန်းသည် မြန်မာနိုင်ငံသားများသာမက ကော့စမွေကျွန်းရှိ ဟိုတယ်နှင့်ခရီးသွားလုပ်ငန်းများကိုပါ
+          အကျိုးပြုမည်ဖြစ်ကြောင်း မျှော်လင့်ပါသည်။ ကျွမ်းကျင်လုပ်သားများ ပိုမိုတိုးပွားလာခြင်းဖြင့်
+          ဒေသခံစီးပွားရေးလုပ်ငန်းများ ပိုမိုတိုးတက်လာပြီး၊ ကော့စမွေကျွန်း၏ ခရီးသွားလုပ်ငန်းကို
+          ပိုမိုအားကောင်းစေမည်ဖြစ်ပါသည်။
+     </p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-4 md:gap-6">
+<div>
+<h3 class="text-lg font-bold mb-4">
+       Samui Myanmar Youth Development Foundation
+      </h3>
+<p class="text-gray-300">
+       ကော့စမွေကျွန်းရှိ မြန်မာလူငယ်များ၏ အနာဂတ်အတွက် ရင်းနှီးမြှုပ်နှံခြင်း
+      </p>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">
+       ဆက်သွယ်ရန်
+      </h3>
+<div class="space-y-2">
+<div class="flex items-center">
+<i class="fas fa-map-marker-alt mr-2">
+</i>
+<span class="text-gray-300">
+         ကော့စမွေကျွန်း၊ ထိုင်းနိုင်ငံ
+        </span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-phone mr-2">
+</i>
+<span class="text-gray-300">
+         +66 XX XXX XXXX
+        </span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-envelope mr-2">
+</i>
+<span class="text-gray-300">
+         info@smydf.org
+        </span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">
+       လူမှုကွန်ရက်
+      </h3>
+<div class="flex space-x-4">
+<a class="text-white hover:text-blue-400 transition" href="#">
+<i class="fab fa-facebook-f text-xl">
+</i>
+</a>
+<a class="text-white hover:text-blue-400 transition" href="#">
+<i class="fab fa-twitter text-xl">
+</i>
+</a>
+<a class="text-white hover:text-blue-400 transition" href="#">
+<i class="fab fa-instagram text-xl">
+</i>
+</a>
+<a class="text-white hover:text-blue-400 transition" href="#">
+<i class="fab fa-linkedin-in text-xl">
+</i>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 text-center">
+<p class="text-gray-400">
+      © 2025 Samui Myanmar Youth Development Foundation. All rights reserved.
+     </p>
+</div>
+</div>
+</footer>
+<div class="modal-overlay" id="modalOverlay"></div><div class="modal-menu" id="modalMenu"><div class="modal-header"><div class="modal-title">SMYDF မီနူး</div><div class="modal-close" id="modalClose">×</div></div><a class="modal-item" href="#summary">စီမံကိန်းအကျဉ်း</a><a class="modal-item" href="#background">နောက်ခံအကြောင်းအရာ</a><a class="modal-item" href="#objectives">ရည်မှန်းချက်များ</a><a class="modal-item" href="#structure">စီမံကိန်းဖွဲ့စည်းပုံ</a><a class="modal-item" href="#budget">ဘတ်ဂျက်</a></div></body>
 </html>
